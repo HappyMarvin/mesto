@@ -4,4 +4,6 @@
   display: flex;
   justify-content: center;
   text-align: center;
+  font-family: 'Inter', Arial, sans-serif;
+  font-weight: 400;
 }
