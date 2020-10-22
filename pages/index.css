@@ -19,5 +19,6 @@
 @import "../blocks/gallery/__like/gallery__like.css";
 @import "../blocks/gallery/__list/gallery__list.css";
 @import "../blocks/gallery/__title/gallery__title.css";
+@import "../blocks/gallery/__image-wrapper/gallery__image-wrapper.css";
 @import "../blocks/footer/footer.css";
 @import "../blocks/footer/__copyright/footer__copyright.css";
