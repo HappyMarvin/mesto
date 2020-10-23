@@ -1,4 +1,4 @@
-.popup__close {
+.profile-profile-popup__close {
   width: 40px;
   height: 40px;
   position: absolute;
@@ -11,7 +11,7 @@
   transition: opacity .3s;
 }
 
-.popup__close:before {
+.profile-popup__close:before {
   content: '';
   position: absolute;
   border: 2px solid #fff;
@@ -22,7 +22,7 @@
   top: calc(50% - 2px);
 }
 
-.popup__close:after {
+.profile-popup__close:after {
   content: '';
   position: absolute;
   border: 2px solid #fff;
@@ -33,11 +33,11 @@
   top: 0;
 }
 
-.popup__close:hover {
+.profile-popup__close:hover {
   opacity: .8;
 }
 
-.popup__close:focus {
+.profile-popup__close:focus {
   outline: none;
   width: 42px;
   height: 42px;

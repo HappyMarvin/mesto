@@ -1,5 +1,6 @@
-.popup__name {
-  margin-top: 51px;
+.profile-popup__description {
+  margin-top: 31px;
+  margin-bottom: 49px;
   padding:0 0 8px 0;
   border: none;
   border-bottom: rgba(0, 0, 0, .2) 1px solid;
@@ -7,7 +8,7 @@
   font-weight: 400;
 }
 
-.popup__name:focus {
+.profile-popup__description:focus {
   outline: none;
   border-bottom: rgba(0, 0, 0, .8) 1px solid;
 }
