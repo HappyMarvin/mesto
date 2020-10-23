@@ -22,7 +22,7 @@
 @import "../blocks/gallery/__image-wrapper/gallery__image-wrapper.css";
 @import "../blocks/profile-popup/profile-popup.css";
 @import "../blocks/profile-popup/__close/profile-popup__close.css";
-@import "../blocks/profile-popup/_hide/profile-popup_hide.css";
+@import "../blocks/profile-popup/_show/profile-popup_show.css";
 @import "../blocks/profile-popup/__description/profile-popup__description.css";
 @import "../blocks/profile-popup/__form/profile-popup__form.css";
 @import "../blocks/profile-popup/__name/profile-popup__name.css";

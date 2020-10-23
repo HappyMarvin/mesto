@@ -11,3 +11,9 @@
   outline: none;
   border-bottom: rgba(0, 0, 0, .8) 1px solid;
 }
+
+@media screen and (max-width: 588px) {
+  .profile-popup__name {
+    margin-top: 76px;
+  }
+}

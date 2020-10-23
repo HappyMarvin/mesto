@@ -23,11 +23,21 @@
       <button class="profile__add" type="button"></button>
     </section>
 
+    <section class="profile-popup">
+      <form action="#" class="profile-popup__form">
+        <h2 class="profile-popup__title">Редактировать профиль</h2>
+        <input type="text" name="profile-popup-name" class="profile-popup__name">
+        <input type="text" name="profile-popup-description" class="profile-popup__description">
+        <button class="profile-popup__submit" type="submit">Сохранить</button>
+        <button class="profile-popup__close"></button>
+      </form>
+    </section>
+
     <section class="gallery">
       <ul class="gallery__list">
         <li class="gallery__item">
           <div class="gallery__image-wrapper">
-            <img src="images/gal-1.jpg" alt="" class="gallery__image">
+            <img src="images/gal-1.jpg" alt="Ямал" class="gallery__image">
           </div>
           <div class="gallery__inner-wrapper">
             <h2 class="gallery__title">Ямал</h2>
@@ -36,7 +46,7 @@
         </li>
         <li class="gallery__item">
           <div class="gallery__image-wrapper">
-            <img src="images/gal-2.jpg" alt="" class="gallery__image">
+            <img src="images/gal-2.jpg" alt="Ямальская тундра" class="gallery__image">
           </div>
           <div class="gallery__inner-wrapper">
             <h2 class="gallery__title">Ямальская тундра</h2>
@@ -45,58 +55,49 @@
         </li>
         <li class="gallery__item">
           <div class="gallery__image-wrapper">
-            <img src="images/gal-3.jpg" alt="" class="gallery__image">
+            <img src="images/gal-3.jpg" alt="Башня Врангеля" class="gallery__image">
           </div>
           <div class="gallery__inner-wrapper">
-            <h2 class="gallery__title">Домбай</h2>
+            <h2 class="gallery__title">Башня Врангеля</h2>
             <button class="gallery__like"></button>
           </div>
         </li>
         <li class="gallery__item">
           <div class="gallery__image-wrapper">
-            <img src="images/gal-4.jpg" alt="" class="gallery__image">
+            <img src="images/gal-4.jpg" alt="Великий Новгород" class="gallery__image">
           </div>
           <div class="gallery__inner-wrapper">
-            <h2 class="gallery__title">Гора Эльбрус</h2>
+            <h2 class="gallery__title">Великий Новгород</h2>
             <button class="gallery__like"></button>
           </div>
         </li>
         <li class="gallery__item">
           <div class="gallery__image-wrapper">
-            <img src="images/gal-5.jpg" alt="" class="gallery__image">
+            <img src="images/gal-5.jpg" alt="Волга" class="gallery__image">
           </div>
           <div class="gallery__inner-wrapper">
-            <h2 class="gallery__title">Домбай</h2>
+            <h2 class="gallery__title">Волга</h2>
             <button class="gallery__like"></button>
           </div>
         </li>
         <li class="gallery__item">
           <div class="gallery__image-wrapper">
-            <img src="images/gal-6.jpg" alt="" class="gallery__image">
+            <img src="images/gal-6.jpg" alt="Уральские горы" class="gallery__image">
           </div>
           <div class="gallery__inner-wrapper">
-            <h2 class="gallery__title">Карачаево-Черкесия</h2>
+            <h2 class="gallery__title">Уральские горы</h2>
             <button class="gallery__like"></button>
           </div>
         </li>
       </ul>
     </section>
 
-    <section class="profile-popup profile-popup_hide">
-      <form action="#" class="profile-popup__form">
-        <h2 class="profile-popup__title">Редактировать профиль</h2>
-        <input type="text" name="profile-popup-name" class="profile-popup__name" value="Жак-Ив Кусто">
-        <input type="text" name="profile-popup-description" class="profile-popup__description" value="Исследователь океана">
-        <button class="profile-popup__submit" type="submit">Сохранить</button>
-        <button class="profile-popup__close"></button>
-      </form>
-
-    </section>
   </div>
 
   <footer class="footer">
     <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
   </footer>
 </div>
+<script src="scripts/index.js"></script>
 </body>
 </html>

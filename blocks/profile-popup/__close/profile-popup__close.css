@@ -1,4 +1,4 @@
-.profile-profile-popup__close {
+.profile-popup__close {
   width: 40px;
   height: 40px;
   position: absolute;
@@ -42,4 +42,25 @@
   width: 42px;
   height: 42px;
   transform: translate(1px, -1px) rotate(45deg);
+}
+
+@media screen and (max-width: 588px) {
+  .profile-popup__close {
+    width: 26px;
+    height: 26px;
+    right: 5px;
+    top: -45px;
+  }
+
+  .profile-popup__close:before {
+    border: 1px solid #fff;
+    height: 2px;
+    top: calc(50% - 1px);
+  }
+
+  .profile-popup__close:after {
+    border: 1px solid #fff;
+    width: 2px;
+    left: calc(50% - 1px);
+  }
 }
