@@ -37,6 +37,7 @@
     width: 18px;
     height: 18px;
     transform: translate(4px, -2px);
+    margin: 25px 0 0 3px;
   }
   .profile__edit:before {
     content: '';
