@@ -8,6 +8,7 @@
   transition: opacity .3s;
   position: relative;
   overflow: hidden;
+  margin-right: auto;
 }
 
 .profile__edit:hover {
