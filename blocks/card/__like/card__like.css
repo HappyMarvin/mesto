@@ -1,4 +1,4 @@
-.gallery__like {
+.card__like {
   width: 20px;
   height: 19px;
   background: url("../../../images/like.svg") no-repeat center;
@@ -10,10 +10,10 @@
   box-sizing: border-box;
 }
 
-.gallery__like:focus {
+.card__like:focus {
   outline: none;
 }
 
-.gallery__like:hover {
+.card__like:hover {
   opacity: .6;
 }
