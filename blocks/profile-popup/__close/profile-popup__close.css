@@ -1,0 +1,66 @@
+.profile-popup__close {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  right: -37px;
+  top: -38px;
+  transform: rotate(45deg);
+  border: none;
+  background-color: #000;
+  cursor: pointer;
+  transition: opacity .3s;
+}
+
+.profile-popup__close:before {
+  content: '';
+  position: absolute;
+  border: 2px solid #fff;
+  width: 100%;
+  height: 4px;
+  box-sizing: border-box;
+  left: 0;
+  top: calc(50% - 2px);
+}
+
+.profile-popup__close:after {
+  content: '';
+  position: absolute;
+  border: 2px solid #fff;
+  width: 4px;
+  height: 100%;
+  box-sizing: border-box;
+  left: calc(50% - 2px);
+  top: 0;
+}
+
+.profile-popup__close:hover {
+  opacity: .8;
+}
+
+.profile-popup__close:focus {
+  outline: none;
+  width: 42px;
+  height: 42px;
+  transform: translate(1px, -1px) rotate(45deg);
+}
+
+@media screen and (max-width: 588px) {
+  .profile-popup__close {
+    width: 26px;
+    height: 26px;
+    right: 5px;
+    top: -45px;
+  }
+
+  .profile-popup__close:before {
+    border: 1px solid #fff;
+    height: 2px;
+    top: calc(50% - 1px);
+  }
+
+  .profile-popup__close:after {
+    border: 1px solid #fff;
+    width: 2px;
+    left: calc(50% - 1px);
+  }
+}
