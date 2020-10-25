@@ -9,9 +9,9 @@ let inputProfileDescription = profilePopup.querySelector('.profile-popup__descri
 let profilePopupForm = profilePopup.querySelector('.profile-popup__form');
 
 function openProfilePopup () {
-  profilePopup.classList.add('profile-popup_show');
   inputProfileName.value = profileName.textContent;
   inputProfileDescription.value = profileDescription.textContent;
+  profilePopup.classList.add('profile-popup_show');
 }
 
 function closeProfilePopup () {
