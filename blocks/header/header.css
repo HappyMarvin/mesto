@@ -5,7 +5,8 @@
 
 @media screen and (max-width: 588px) {
   .header {
-    padding: 28px 0 31px 8px;
+    margin: 0 -19px;
+    padding: 28px 0 31px 27px;
     flex-direction: column;
   }
 }
