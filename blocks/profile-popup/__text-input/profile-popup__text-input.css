@@ -1,6 +1,5 @@
-.profile-popup__description {
+.profile-popup__text-input {
   margin-top: 31px;
-  margin-bottom: 49px;
   padding:0 0 8px 0;
   border: none;
   border-bottom: rgba(0, 0, 0, .2) 1px solid;
@@ -8,13 +7,7 @@
   font-weight: 400;
 }
 
-.profile-popup__description:focus {
+.profile-popup__text-input:focus {
   outline: none;
   border-bottom: rgba(0, 0, 0, .8) 1px solid;
-}
-
-@media screen and (max-width: 588px) {
-  .profile-popup__description {
-    margin-bottom: 47px;
-  }
 }

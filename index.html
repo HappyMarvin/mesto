@@ -16,20 +16,26 @@
       <div class="profile__info">
         <div class="profile__name-wrapper">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <button class="profile__edit" type="button" name="profile-edit"></button>
+          <button class="profile__edit" type="button" aria-label="Редактировать профайл"></button>
         </div>
         <p class="profile__description">Исследователь океана</p>
       </div>
-      <button class="profile__add" type="button" name="profile-add"></button>
+      <button class="profile__add" type="button" aria-label="Добавить карточку"></button>
     </section>
 
     <section class="profile-popup">
-      <form action="#" class="profile-popup__form">
+      <form action="#" class="profile-popup__form" name="profile-popup-form">
         <h2 class="profile-popup__title">Редактировать профиль</h2>
-        <input type="text" name="profile-popup-name" class="profile-popup__name" maxlength="24">
-        <input type="text" name="profile-popup-description" class="profile-popup__description" maxlength="50">
+        <input type="text"
+               name="profile-popup-name"
+               class="profile-popup__text-input profile-popup__text-input_name"
+               maxlength="24">
+        <input type="text"
+               name="profile-popup-description"
+               class="profile-popup__text-input profile-popup__text-input_description"
+               maxlength="50">
         <button class="profile-popup__submit" type="submit" name="profile-popup-submit">Сохранить</button>
-        <button class="profile-popup__close" name="profile-popup-close"></button>
+        <button class="profile-popup__close" type="button" aria-label="Закрыть форму"></button>
       </form>
     </section>
 
@@ -46,7 +52,7 @@
           </div>
           <div class="gallery__inner-wrapper">
             <h2 class="gallery__title">Ямал</h2>
-            <button class="gallery__like" name="gallery-like"></button>
+            <button class="gallery__like" type="button" aria-label="Лайк"></button>
           </div>
         </li>
         <li class="gallery__item">
@@ -59,7 +65,7 @@
           </div>
           <div class="gallery__inner-wrapper">
             <h2 class="gallery__title">Ямальская тундра</h2>
-            <button class="gallery__like" name="gallery-like"></button>
+            <button class="gallery__like" type="button" aria-label="Лайк"></button>
           </div>
         </li>
         <li class="gallery__item">
@@ -72,7 +78,7 @@
           </div>
           <div class="gallery__inner-wrapper">
             <h2 class="gallery__title">Башня Врангеля</h2>
-            <button class="gallery__like" name="gallery-like"></button>
+            <button class="gallery__like" type="button" aria-label="Лайк"></button>
           </div>
         </li>
         <li class="gallery__item">
@@ -85,7 +91,7 @@
           </div>
           <div class="gallery__inner-wrapper">
             <h2 class="gallery__title">Великий Новгород</h2>
-            <button class="gallery__like" name="gallery-like"></button>
+            <button class="gallery__like" type="button" aria-label="Лайк"></button>
           </div>
         </li>
         <li class="gallery__item">
@@ -98,7 +104,7 @@
           </div>
           <div class="gallery__inner-wrapper">
             <h2 class="gallery__title">Волга</h2>
-            <button class="gallery__like" name="gallery-like"></button>
+            <button class="gallery__like" type="button" aria-label="Лайк"></button>
           </div>
         </li>
         <li class="gallery__item">
@@ -111,7 +117,7 @@
           </div>
           <div class="gallery__inner-wrapper">
             <h2 class="gallery__title">Уральские горы</h2>
-            <button class="gallery__like" name="gallery-like"></button>
+            <button class="gallery__like" type="button" aria-label="Лайк"></button>
           </div>
         </li>
       </ul>

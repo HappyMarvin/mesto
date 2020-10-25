@@ -8,7 +8,6 @@
   max-width: 430px;
   min-width: 282px;
   width: 100%;
-  min-height: 330px;
   padding: 34px 36px 36px 36px;
   margin: 0 19px 0 19px;
   text-align: left;
@@ -20,6 +19,5 @@
   .profile-popup__form {
     transform: translateY(-160px);
     padding: 27px 22px 25px 22px;
-    min-height: 0;
   }
 }
