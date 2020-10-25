@@ -41,7 +41,6 @@
     margin: 25px 0 0 3px;
   }
   .profile__edit:before {
-    content: '';
     background-size: 8px;
   }
 }
