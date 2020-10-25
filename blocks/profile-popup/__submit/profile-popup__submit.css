@@ -10,6 +10,7 @@
   font-size: 18px;
   font-weight: 400;
   transition: opacity .3s;
+  margin-top: 49px;
 }
 
 .profile-popup__submit:hover {
@@ -20,5 +21,6 @@
   .profile-popup__submit{
     font-size: 14px;
     min-height: 46px;
+    margin-top: 49px;
   }
 }

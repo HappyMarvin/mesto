@@ -6,7 +6,7 @@
   top: -38px;
   transform: rotate(45deg);
   border: none;
-  background-color: #000;
+  background: none;
   cursor: pointer;
   transition: opacity .3s;
 }

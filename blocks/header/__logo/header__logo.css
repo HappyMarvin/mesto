@@ -4,6 +4,11 @@
   background: url("../../../images/logo.svg") no-repeat;
   background-size: cover;
   display: block;
+  transition: opacity .3s;
+}
+
+.header__logo:hover {
+  opacity: .6;
 }
 
 @media screen and (max-width: 588px) {
