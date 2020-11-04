@@ -1,12 +1,54 @@
-let profile = document.querySelector('.profile')
-let profilePopup = document.querySelector('.profile-popup');
-let profileButtonEdit = profile.querySelector('.profile__edit');
-let profilePopupClose = profilePopup.querySelector('.profile-popup__close');
-let profileName = profile.querySelector('.profile__name');
-let profileDescription = profile.querySelector('.profile__description');
-let inputProfileName = profilePopup.querySelector('.profile-popup__text-input_name');
-let inputProfileDescription = profilePopup.querySelector('.profile-popup__text-input_description');
-let profilePopupForm = profilePopup.querySelector('.profile-popup__form');
+const profile = document.querySelector('.profile')
+const profilePopup = document.querySelector('.profile-popup');
+const profileButtonEdit = profile.querySelector('.profile__edit');
+const profilePopupClose = profilePopup.querySelector('.profile-popup__close');
+const profileName = profile.querySelector('.profile__name');
+const profileDescription = profile.querySelector('.profile__description');
+const inputProfileName = profilePopup.querySelector('.profile-popup__text-input_name');
+const inputProfileDescription = profilePopup.querySelector('.profile-popup__text-input_description');
+const profilePopupForm = profilePopup.querySelector('.profile-popup__form');
+const cardTemplate = document.querySelector('#card-template').content;
+const galleryList = document.querySelector('.gallery__list');
+
+
+const initialCards = [
+  {
+    name: 'Ямал',
+    link: 'http://sikhirtya.ru/mesto/img/gal-1.jpg'
+  },
+  {
+    name: 'Ямальская тундра',
+    link: 'http://sikhirtya.ru/mesto/img/gal-2.jpg'
+  },
+  {
+    name: 'Башня Врангеля',
+    link: 'http://sikhirtya.ru/mesto/img/gal-3.jpg'
+  },
+  {
+    name: 'Великий Новгород',
+    link: 'http://sikhirtya.ru/mesto/img/gal-4.jpg'
+  },
+  {
+    name: 'Волга',
+    link: 'http://sikhirtya.ru/mesto/img/gal-5.jpg'
+  },
+  {
+    name: 'Уральские горы',
+    link: 'http://sikhirtya.ru/mesto/img/gal-6.jpg'
+  }
+];
+
+function createCard(name, source) {
+  const card = cardTemplate.cloneNode(true);
+  card.querySelector('.card__title').textContent = name;
+  card.querySelector('.card__image').src = source;
+  card.querySelector('.card__image').alt = name;
+  return card;
+}
+
+function addArrayCards(arrayCards) {
+  arrayCards.forEach(item => galleryList.append(createCard(item.name, item.link)));
+}
 
 function openProfilePopup () {
   inputProfileName.value = profileName.textContent;
@@ -24,6 +66,8 @@ function submitProfilePopup (evt) {
   profileDescription.textContent = inputProfileDescription.value;
   closeProfilePopup ();
 }
+
+addArrayCards(initialCards);
 
 profileButtonEdit.addEventListener('click', openProfilePopup);
 profilePopupClose.addEventListener('click', closeProfilePopup);
