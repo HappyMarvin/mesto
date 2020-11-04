@@ -1,4 +1,4 @@
-.profile-popup__close {
+.popup__close {
   width: 40px;
   height: 40px;
   position: absolute;
@@ -11,7 +11,7 @@
   transition: opacity .3s;
 }
 
-.profile-popup__close:before {
+.popup__close:before {
   content: '';
   position: absolute;
   border: 2px solid #fff;
@@ -22,7 +22,7 @@
   top: calc(50% - 2px);
 }
 
-.profile-popup__close:after {
+.popup__close:after {
   content: '';
   position: absolute;
   border: 2px solid #fff;
@@ -33,11 +33,11 @@
   top: 0;
 }
 
-.profile-popup__close:hover {
+.popup__close:hover {
   opacity: .8;
 }
 
-.profile-popup__close:focus {
+.popup__close:focus {
   outline: none;
   width: 42px;
   height: 42px;
@@ -45,20 +45,20 @@
 }
 
 @media screen and (max-width: 588px) {
-  .profile-popup__close {
+  .popup__close {
     width: 26px;
     height: 26px;
     right: 5px;
     top: -45px;
   }
 
-  .profile-popup__close:before {
+  .popup__close:before {
     border: 1px solid #fff;
     height: 2px;
     top: calc(50% - 1px);
   }
 
-  .profile-popup__close:after {
+  .popup__close:after {
     border: 1px solid #fff;
     width: 2px;
     left: calc(50% - 1px);

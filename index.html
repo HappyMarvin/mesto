@@ -9,7 +9,8 @@
 </head>
 <body class="page">
 <div class="container">
-  <header class="header"><a href="#" class="header__logo"></a></header>
+  <header class="header"><a target="_blank" href="https://stackoverflow.com%2Fquestions%2F332872%2Fencode-url-in-javascript%3Furl%3D11%26p%3D12"
+     class="header__logo"></a></header>
   <div class="main">
     <section class="profile">
       <img src="images/avatar.jpg" alt="аватар пользопателя" class="profile__avatar">
@@ -23,19 +24,37 @@
       <button class="profile__add" type="button" aria-label="Добавить карточку"></button>
     </section>
 
-    <section class="profile-popup">
-      <form action="#" class="profile-popup__form" name="profile-popup-form">
-        <h2 class="profile-popup__title">Редактировать профиль</h2>
+    <section class="popup popup_profile">
+      <form action="#" class="popup__form" name="popup-form">
+        <h2 class="popup__title">Редактировать профиль</h2>
         <input type="text"
-               name="profile-popup-name"
-               class="profile-popup__text-input profile-popup__text-input_name"
+               name="popup-name"
+               class="popup__text-input popup__text-input_name"
                maxlength="24">
         <input type="text"
-               name="profile-popup-description"
-               class="profile-popup__text-input profile-popup__text-input_description"
+               name="popup-description"
+               class="popup__text-input popup__text-input_description"
                maxlength="50">
-        <button class="profile-popup__submit" type="submit" name="profile-popup-submit">Сохранить</button>
-        <button class="profile-popup__close" type="button" aria-label="Закрыть форму"></button>
+        <button class="popup__submit" type="submit" name="popup-submit">Сохранить</button>
+        <button class="popup__close popup__close_profile" type="button" aria-label="Закрыть форму"></button>
+      </form>
+    </section>
+
+    <section class="popup">
+      <form action="#" class="popup__form" name="popup-form">
+        <h2 class="popup__title">Новое место</h2>
+        <input type="text"
+               name="popup-name"
+               class="popup__text-input popup__text-input_name"
+               maxlength="24"
+               placeholder="Название">
+        <input type="text"
+               name="popup-description"
+               class="popup__text-input popup__text-input_description"
+               maxlength="50"
+               placeholder="Ссылка на картинку">
+        <button class="popup__submit" type="submit" name="popup-submit">Создать</button>
+        <button class="popup__close popup__close_popup" type="button" aria-label="Закрыть форму"></button>
       </form>
     </section>
 

@@ -1,4 +1,4 @@
-.profile-popup_show {
+.popup_show {
   display: flex;
   animation: popup-show .4s linear;
 }
