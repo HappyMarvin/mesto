@@ -57,6 +57,10 @@ function addCard(card) {
       .addEventListener('click', function () {
         deleteCard(this.closest('.card'));
       })
+  card.querySelector('.card__like')
+      .addEventListener('click', function () {
+        switchLike(this);
+      })
   galleryList.prepend(card);
 }
 
@@ -97,6 +101,10 @@ function submitPlacePopup (evt) {
   }
   addCard(createCard(inputPlaceName.value, inputPlaceLink.value));
   closePopup(newPlacePopup);
+}
+
+function switchLike(card) {
+  card.classList.toggle('card__like_active');
 }
 
 function deleteCard(card) {
