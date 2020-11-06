@@ -1,4 +1,4 @@
-.profile-popup__text-input {
+.popup__text-input {
   margin-top: 31px;
   padding:0 0 8px 0;
   border: none;
@@ -7,7 +7,7 @@
   font-weight: 400;
 }
 
-.profile-popup__text-input:focus {
+.popup__text-input:focus {
   outline: none;
   border-bottom: rgba(0, 0, 0, .8) 1px solid;
 }
