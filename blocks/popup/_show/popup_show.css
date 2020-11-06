@@ -1,13 +1,4 @@
 .popup_show {
-  display: flex;
-  animation: popup-show .4s linear;
-}
-
-@keyframes popup-show {
-  from{
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  visibility: visible;
+  opacity: 1;
 }
