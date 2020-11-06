@@ -51,7 +51,12 @@ function createCard(name, source) {
   card.querySelector('.card__image').alt = name;
   return card;
 }
+
 function addCard(card) {
+  card.querySelector('.card__delete')
+      .addEventListener('click', function () {
+        deleteCard(this.closest('.card'));
+      })
   galleryList.prepend(card);
 }
 
@@ -85,8 +90,17 @@ function submitPlacePopup (evt) {
   evt.preventDefault();
   const inputPlaceLink = document.querySelector('.popup__text-input_place-link');
   const inputPlaceName = document.querySelector('.popup__text-input_place-name');
+  if (!inputPlaceName.value || inputPlaceName.value === 'Введите имя!') {
+    return inputPlaceName.value = 'Введите имя!';
+  } else if (!inputPlaceLink.value || inputPlaceLink.value === 'Введите ссылку!') {
+    return inputPlaceLink.value = 'Введите ссылку!';
+  }
   addCard(createCard(inputPlaceName.value, inputPlaceLink.value));
   closePopup(newPlacePopup);
+}
+
+function deleteCard(card) {
+  card.remove();
 }
 
 addArrayCards(initialCards);
