@@ -9,7 +9,8 @@
 </head>
 <body class="page">
 <div class="container">
-  <header class="header"><a href="#" class="header__logo"></a></header>
+  <header class="header"><a target="_blank" href="https://stackoverflow.com%2Fquestions%2F332872%2Fencode-url-in-javascript%3Furl%3D11%26p%3D12"
+     class="header__logo"></a></header>
   <div class="main">
     <section class="profile">
       <img src="images/avatar.jpg" alt="аватар пользопателя" class="profile__avatar">
@@ -23,102 +24,51 @@
       <button class="profile__add" type="button" aria-label="Добавить карточку"></button>
     </section>
 
-    <section class="profile-popup">
-      <form action="#" class="profile-popup__form" name="profile-popup-form">
-        <h2 class="profile-popup__title">Редактировать профиль</h2>
+    <section class="popup popup_profile">
+      <form action="#" class="popup__form popup__form_profile" name="popup-form">
+        <h2 class="popup__title">Редактировать профиль</h2>
         <input type="text"
-               name="profile-popup-name"
-               class="profile-popup__text-input profile-popup__text-input_name"
+               name="popup-name"
+               class="popup__text-input popup__text-input_name"
                maxlength="24">
         <input type="text"
-               name="profile-popup-description"
-               class="profile-popup__text-input profile-popup__text-input_description"
+               name="popup-description"
+               class="popup__text-input popup__text-input_description"
                maxlength="50">
-        <button class="profile-popup__submit" type="submit" name="profile-popup-submit">Сохранить</button>
-        <button class="profile-popup__close" type="button" aria-label="Закрыть форму"></button>
+        <button class="popup__submit" type="submit" name="popup-submit">Сохранить</button>
+        <button class="popup__close popup__close_profile" type="button" aria-label="Закрыть форму"></button>
+      </form>
+    </section>
+
+    <section class="popup popup_image">
+      <div class="popup__container">
+        <img src="" alt="Фото места" class="popup__image">
+        <h2 class="popup__image-title"></h2>
+        <button class="popup__close popup__close_image" type="button" aria-label="Закрыть фото"></button>
+      </div>
+    </section>
+
+    <section class="popup popup_new-place">
+      <form action="#" class="popup__form popup__form_place" name="popup-form">
+        <h2 class="popup__title">Новое место</h2>
+        <input type="text"
+               name="popup-name"
+               class="popup__text-input popup__text-input_place-name"
+               maxlength="24"
+               placeholder="Название">
+        <input type="text"
+               name="popup-description"
+               class="popup__text-input popup__text-input_place-link"
+               maxlength="500"
+               placeholder="Ссылка на картинку">
+        <button class="popup__submit" type="submit" name="popup-submit">Создать</button>
+        <button class="popup__close popup__close_new-place" type="button" aria-label="Закрыть форму"></button>
       </form>
     </section>
 
     <section class="gallery">
       <ul class="gallery__list">
-        <li class="card">
-          <div class="card__image-wrapper">
-            <picture>
-              <source srcset="images/gal-1.webp" type="image/webp">
-              <source srcset="images/gal-1.jpg" type="image/jpeg">
-              <img src="images/gal-1.jpg" alt="Ямал" class="card__image">
-            </picture>
-          </div>
-          <div class="card__inner-wrapper">
-            <h2 class="card__title">Ямал</h2>
-            <button class="card__like" type="button" aria-label="Лайк"></button>
-          </div>
-        </li>
-        <li class="card">
-          <div class="card__image-wrapper">
-            <picture>
-              <source srcset="images/gal-2.webp" type="image/webp">
-              <source srcset="images/gal-2.jpg" type="image/jpeg">
-              <img src="images/gal-2.jpg" alt="Ямал" class="card__image">
-            </picture>
-          </div>
-          <div class="card__inner-wrapper">
-            <h2 class="card__title">Ямальская тундра</h2>
-            <button class="card__like" type="button" aria-label="Лайк"></button>
-          </div>
-        </li>
-        <li class="card">
-          <div class="card__image-wrapper">
-            <picture>
-              <source srcset="images/gal-3.webp" type="image/webp">
-              <source srcset="images/gal-3.jpg" type="image/jpeg">
-              <img src="images/gal-3.jpg" alt="Ямал" class="card__image">
-            </picture>
-          </div>
-          <div class="card__inner-wrapper">
-            <h2 class="card__title">Башня Врангеля</h2>
-            <button class="card__like" type="button" aria-label="Лайк"></button>
-          </div>
-        </li>
-        <li class="card">
-          <div class="card__image-wrapper">
-            <picture>
-              <source srcset="images/gal-4.webp" type="image/webp">
-              <source srcset="images/gal-4.jpg" type="image/jpeg">
-              <img src="images/gal-4.jpg" alt="Ямал" class="card__image">
-            </picture>
-          </div>
-          <div class="card__inner-wrapper">
-            <h2 class="card__title">Великий Новгород</h2>
-            <button class="card__like" type="button" aria-label="Лайк"></button>
-          </div>
-        </li>
-        <li class="card">
-          <div class="card__image-wrapper">
-            <picture>
-              <source srcset="images/gal-5.webp" type="image/webp">
-              <source srcset="images/gal-5.jpg" type="image/jpeg">
-              <img src="images/gal-5.jpg" alt="Ямал" class="card__image">
-            </picture>
-          </div>
-          <div class="card__inner-wrapper">
-            <h2 class="card__title">Волга</h2>
-            <button class="card__like" type="button" aria-label="Лайк"></button>
-          </div>
-        </li>
-        <li class="card">
-          <div class="card__image-wrapper">
-            <picture>
-              <source srcset="images/gal-6.webp" type="image/webp">
-              <source srcset="images/gal-6.jpg" type="image/jpeg">
-              <img src="images/gal-6.jpg" alt="Ямал" class="card__image">
-            </picture>
-          </div>
-          <div class="card__inner-wrapper">
-            <h2 class="card__title">Уральские горы</h2>
-            <button class="card__like" type="button" aria-label="Лайк"></button>
-          </div>
-        </li>
+
       </ul>
     </section>
 
@@ -127,6 +77,19 @@
     <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
   </footer>
 </div>
+
+<template id="card-template">
+  <li class="card">
+    <div class="card__image-wrapper">
+      <img src="images/gal-1.jpg" alt="Ямал" class="card__image">
+    </div>
+    <div class="card__inner-wrapper">
+      <h2 class="card__title">Ямал</h2>
+      <button class="card__like" type="button" aria-label="Лайк"></button>
+    </div>
+    <button class="card__delete" type="button" aria-label="Удалить карточку"></button>
+  </li>
+</template>
 <script src="scripts/index.js"></script>
 </body>
 </html>

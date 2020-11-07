@@ -1,30 +1,141 @@
-let profile = document.querySelector('.profile')
-let profilePopup = document.querySelector('.profile-popup');
-let profileButtonEdit = profile.querySelector('.profile__edit');
-let profilePopupClose = profilePopup.querySelector('.profile-popup__close');
-let profileName = profile.querySelector('.profile__name');
-let profileDescription = profile.querySelector('.profile__description');
-let inputProfileName = profilePopup.querySelector('.profile-popup__text-input_name');
-let inputProfileDescription = profilePopup.querySelector('.profile-popup__text-input_description');
-let profilePopupForm = profilePopup.querySelector('.profile-popup__form');
+const cardTemplate = document.querySelector('#card-template').content;
+const galleryList = document.querySelector('.gallery__list');
+//profile
+const profile = document.querySelector('.profile')
+const profileName = profile.querySelector('.profile__name');
+const profileDescription = profile.querySelector('.profile__description');
+const profileButtonEdit = profile.querySelector('.profile__edit');
+const profileButtonAdd = profile.querySelector('.profile__add');
+// profile-popup
+const profilePopup = document.querySelector('.popup_profile');
+const inputProfileName = profilePopup.querySelector('.popup__text-input_name');
+const inputProfileDescription = profilePopup.querySelector('.popup__text-input_description');
+const profilePopupForm = profilePopup.querySelector('.popup__form_profile');
+const profilePopupClose = profilePopup.querySelector('.popup__close_profile');
+// place-popup
+const newPlacePopup = document.querySelector('.popup_new-place');
+const placePopupForm = newPlacePopup.querySelector('.popup__form_place');
+const placePopupClose = newPlacePopup.querySelector('.popup__close_new-place');
+//image-popup
+const imagePopup = document.querySelector('.popup_image');
+const closeImagePopup = imagePopup.querySelector('.popup__close_image');
+const imagePopupTitle = imagePopup.querySelector('.popup__image-title');
+const imagePopupImage = imagePopup.querySelector('.popup__image');
+
+const initialCards = [
+  {
+    name: 'Ямал',
+    link: 'http://sikhirtya.ru/mesto/img/gal-1.jpg'
+  },
+  {
+    name: 'Ямальская тундра',
+    link: 'http://sikhirtya.ru/mesto/img/gal-2.jpg'
+  },
+  {
+    name: 'Башня Врангеля',
+    link: 'http://sikhirtya.ru/mesto/img/gal-3.jpg'
+  },
+  {
+    name: 'Великий Новгород',
+    link: 'http://sikhirtya.ru/mesto/img/gal-4.jpg'
+  },
+  {
+    name: 'Волга',
+    link: 'http://sikhirtya.ru/mesto/img/gal-5.jpg'
+  },
+  {
+    name: 'Уральские горы',
+    link: 'http://sikhirtya.ru/mesto/img/gal-6.jpg'
+  }
+];
+
+function createCard(name, source) {
+  const card = cardTemplate.cloneNode(true);
+  card.querySelector('.card__title').textContent = name;
+  card.querySelector('.card__image').src = source;
+  card.querySelector('.card__image').alt = name;
+  return card;
+}
+
+function addCard(card) {
+  card.querySelector('.card__delete')
+      .addEventListener('click', function () {
+        deleteCard(this.closest('.card'));
+      })
+  card.querySelector('.card__like')
+      .addEventListener('click', function () {
+        switchLike(this);
+      })
+  card.querySelector('.card__image')
+      .addEventListener('click', function () {
+        openImagePopup(this.closest('.card'));
+      })
+  galleryList.prepend(card);
+}
+
+function addArrayCards(arrayCards) {
+  arrayCards.reverse().forEach(item => addCard(createCard(item.name, item.link)));
+}
+
+function openPopup(popup) {
+  popup.classList.add('popup_show');
+}
 
 function openProfilePopup () {
   inputProfileName.value = profileName.textContent;
   inputProfileDescription.value = profileDescription.textContent;
-  profilePopup.classList.add('profile-popup_show');
+  openPopup(profilePopup);
 }
 
-function closeProfilePopup () {
-  profilePopup.classList.remove('profile-popup_show');
+function openImagePopup (card) {
+  const cardTitle = card.querySelector('.card__title').textContent;
+  imagePopupTitle.textContent = cardTitle;
+  imagePopupImage.src = card.querySelector('.card__image').src;
+  imagePopupImage.alt = cardTitle + ' - полный размер';
+  openPopup(imagePopup);
+}
+
+function closePopup (popup) {
+  popup.classList.remove('popup_show');
+  popup.querySelectorAll('input').forEach(input => input.value = '');
 }
 
 function submitProfilePopup (evt) {
   evt.preventDefault();
   profileName.textContent = inputProfileName.value;
   profileDescription.textContent = inputProfileDescription.value;
-  closeProfilePopup ();
+  closePopup(profilePopup);
 }
 
+function submitPlacePopup (evt) {
+  evt.preventDefault();
+  const inputPlaceLink = document.querySelector('.popup__text-input_place-link');
+  const inputPlaceName = document.querySelector('.popup__text-input_place-name');
+  if (!inputPlaceName.value || inputPlaceName.value === 'Введите имя!') {
+    return inputPlaceName.value = 'Введите имя!';
+  } else if (!inputPlaceLink.value || inputPlaceLink.value === 'Введите ссылку!') {
+    return inputPlaceLink.value = 'Введите ссылку!';
+  }
+  addCard(createCard(inputPlaceName.value, inputPlaceLink.value));
+  closePopup(newPlacePopup);
+}
+
+function switchLike(card) {
+  card.classList.toggle('card__like_active');
+}
+
+function deleteCard(card) {
+  card.remove();
+}
+
+addArrayCards(initialCards);
+
 profileButtonEdit.addEventListener('click', openProfilePopup);
-profilePopupClose.addEventListener('click', closeProfilePopup);
+profilePopupClose.addEventListener('click', () => closePopup(profilePopup));
 profilePopupForm.addEventListener('submit', submitProfilePopup);
+
+profileButtonAdd.addEventListener('click', () => openPopup(newPlacePopup));
+placePopupClose.addEventListener('click', () => closePopup(newPlacePopup));
+placePopupForm.addEventListener('submit', submitPlacePopup);
+
+closeImagePopup.addEventListener('click', () => closePopup(imagePopup));
