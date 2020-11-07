@@ -51,7 +51,7 @@ const initialCards = [
 
 function createCard(name, source) {
   const card = cardTemplate.cloneNode(true);
-  const cardImage = card.querySelector('.card__title');
+  const cardImage = card.querySelector('.card__image');
   card.querySelector('.card__title').textContent = name;
   cardImage.src = source;
   cardImage.alt = name;
