@@ -124,6 +124,7 @@ function submitPlacePopup (evt) {
   evt.preventDefault();
   addCard(createCard(inputPlaceName.value, inputPlaceLink.value));
   closePopup(newPlacePopup);
+  cleanInputs(newPlacePopup);
 }
 
 addArrayCards(initialCards);
