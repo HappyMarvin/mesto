@@ -122,11 +122,6 @@ function submitProfilePopup (evt) {
 
 function submitPlacePopup (evt) {
   evt.preventDefault();
-  if (!inputPlaceName.value || inputPlaceName.value === 'Введите имя!') {
-    return inputPlaceName.value = 'Введите имя!';
-  } else if (!inputPlaceLink.value || inputPlaceLink.value === 'Введите ссылку!') {
-    return inputPlaceLink.value = 'Введите ссылку!';
-  }
   addCard(createCard(inputPlaceName.value, inputPlaceLink.value));
   closePopup(newPlacePopup);
 }
