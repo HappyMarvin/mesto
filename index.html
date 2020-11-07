@@ -24,48 +24,6 @@
       <button class="profile__add" type="button" aria-label="Добавить карточку"></button>
     </section>
 
-    <section class="popup popup_profile">
-      <form action="#" class="popup__form popup__form_profile" name="popup-form">
-        <h2 class="popup__title">Редактировать профиль</h2>
-        <input type="text"
-               name="popup-name"
-               class="popup__text-input popup__text-input_name"
-               maxlength="24">
-        <input type="text"
-               name="popup-description"
-               class="popup__text-input popup__text-input_description"
-               maxlength="50">
-        <button class="popup__submit" type="submit" name="popup-submit">Сохранить</button>
-        <button class="popup__close popup__close_profile" type="button" aria-label="Закрыть форму"></button>
-      </form>
-    </section>
-
-    <section class="popup popup_image">
-      <div class="popup__container">
-        <img src="#" alt="Фото места" class="popup__image">
-        <h2 class="popup__image-title">Фото места</h2>
-        <button class="popup__close popup__close_image" type="button" aria-label="Закрыть фото"></button>
-      </div>
-    </section>
-
-    <section class="popup popup_new-place">
-      <form action="#" class="popup__form popup__form_place" name="popup-form">
-        <h2 class="popup__title">Новое место</h2>
-        <input type="text"
-               name="popup-name"
-               class="popup__text-input popup__text-input_place-name"
-               maxlength="24"
-               placeholder="Название">
-        <input type="text"
-               name="popup-description"
-               class="popup__text-input popup__text-input_place-link"
-               maxlength="500"
-               placeholder="Ссылка на картинку">
-        <button class="popup__submit" type="submit" name="popup-submit">Создать</button>
-        <button class="popup__close popup__close_new-place" type="button" aria-label="Закрыть форму"></button>
-      </form>
-    </section>
-
     <section class="gallery">
       <ul class="gallery__list">
 
@@ -77,6 +35,48 @@
     <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
   </footer>
 </div>
+
+<section class="popup popup_profile">
+  <form action="#" class="popup__form popup__form_profile" name="popup-form">
+    <h2 class="popup__title">Редактировать профиль</h2>
+    <input type="text"
+           name="popup-name"
+           class="popup__text-input popup__text-input_name"
+           maxlength="24">
+    <input type="text"
+           name="popup-description"
+           class="popup__text-input popup__text-input_description"
+           maxlength="50">
+    <button class="popup__submit" type="submit" name="popup-submit">Сохранить</button>
+    <button class="popup__close popup__close_profile" type="button" aria-label="Закрыть форму"></button>
+  </form>
+</section>
+
+<section class="popup popup_image">
+  <div class="popup__container">
+    <img src="#" alt="Фото места" class="popup__image">
+    <h2 class="popup__image-title">Фото места</h2>
+    <button class="popup__close popup__close_image" type="button" aria-label="Закрыть фото"></button>
+  </div>
+</section>
+
+<section class="popup popup_new-place">
+  <form action="#" class="popup__form popup__form_place" name="popup-form">
+    <h2 class="popup__title">Новое место</h2>
+    <input type="text"
+           name="popup-name"
+           class="popup__text-input popup__text-input_place-name"
+           maxlength="24"
+           placeholder="Название">
+    <input type="text"
+           name="popup-description"
+           class="popup__text-input popup__text-input_place-link"
+           maxlength="500"
+           placeholder="Ссылка на картинку">
+    <button class="popup__submit" type="submit" name="popup-submit">Создать</button>
+    <button class="popup__close popup__close_new-place" type="button" aria-label="Закрыть форму"></button>
+  </form>
+</section>
 
 <template id="card-template">
   <li class="card">
