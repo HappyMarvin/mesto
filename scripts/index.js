@@ -72,7 +72,7 @@ function openImagePopup (card) {
   const cardTitle = card.querySelector('.card__title').textContent;
   imagePopupTitle.textContent = cardTitle;
   imagePopupImage.src = card.querySelector('.card__image').src;
-  imagePopupImage.alt = cardTitle + ' - полный размер';
+  imagePopupImage.alt = `${cardTitle} +  - полный размер`;
   openPopup(imagePopup);
 }
 
