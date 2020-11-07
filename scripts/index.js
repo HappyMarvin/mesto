@@ -13,9 +13,14 @@ const inputProfileDescription = profilePopup.querySelector('.popup__text-input_d
 const profilePopupForm = profilePopup.querySelector('.popup__form_profile');
 const profilePopupClose = profilePopup.querySelector('.popup__close_profile');
 // place-popup
-const placePopupClose = document.querySelector('.popup__close_new-place');
 const newPlacePopup = document.querySelector('.popup_new-place');
 const placePopupForm = newPlacePopup.querySelector('.popup__form_place');
+const placePopupClose = newPlacePopup.querySelector('.popup__close_new-place');
+//image-popup
+const imagePopup = document.querySelector('.popup_image');
+const closeImagePopup = imagePopup.querySelector('.popup__close_image');
+const imagePopupTitle = imagePopup.querySelector('.popup__image-title');
+const imagePopupImage = imagePopup.querySelector('.popup__image');
 
 const initialCards = [
   {
@@ -61,11 +66,15 @@ function addCard(card) {
       .addEventListener('click', function () {
         switchLike(this);
       })
+  card.querySelector('.card__image')
+      .addEventListener('click', function () {
+        openImagePopup(this.closest('.card'));
+      })
   galleryList.prepend(card);
 }
 
 function addArrayCards(arrayCards) {
-  arrayCards.forEach(item => addCard(createCard(item.name, item.link)));
+  arrayCards.reverse().forEach(item => addCard(createCard(item.name, item.link)));
 }
 
 function openPopup(popup) {
@@ -76,6 +85,14 @@ function openProfilePopup () {
   inputProfileName.value = profileName.textContent;
   inputProfileDescription.value = profileDescription.textContent;
   openPopup(profilePopup);
+}
+
+function openImagePopup (card) {
+  const cardTitle = card.querySelector('.card__title').textContent;
+  imagePopupTitle.textContent = cardTitle;
+  imagePopupImage.src = card.querySelector('.card__image').src;
+  imagePopupImage.alt = cardTitle + ' - полный размер';
+  openPopup(imagePopup);
 }
 
 function closePopup (popup) {
@@ -120,3 +137,5 @@ profilePopupForm.addEventListener('submit', submitProfilePopup);
 profileButtonAdd.addEventListener('click', () => openPopup(newPlacePopup));
 placePopupClose.addEventListener('click', () => closePopup(newPlacePopup));
 placePopupForm.addEventListener('submit', submitPlacePopup);
+
+closeImagePopup.addEventListener('click', () => closePopup(imagePopup));

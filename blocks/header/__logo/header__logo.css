@@ -2,7 +2,7 @@
   width: 142px;
   height: 34px;
   background: url("../../../images/logo.svg") no-repeat;
-  background-size: cover;
+  background-size: contain;
   display: block;
   transition: opacity .3s;
 }
