@@ -25,27 +25,27 @@ const imagePopupImage = imagePopup.querySelector('.popup__image');
 const initialCards = [
   {
     name: 'Ямал',
-    link: 'http://sikhirtya.ru/mesto/img/gal-1.jpg'
+    link: 'https://i.ibb.co/4pbMPYn/gal-1.jpg'
   },
   {
     name: 'Ямальская тундра',
-    link: 'http://sikhirtya.ru/mesto/img/gal-2.jpg'
+    link: 'https://i.ibb.co/cCNzL1d/gal-2.jpg'
   },
   {
     name: 'Башня Врангеля',
-    link: 'http://sikhirtya.ru/mesto/img/gal-3.jpg'
+    link: 'https://i.ibb.co/BBJ43ps/gal-3.jpg'
   },
   {
     name: 'Великий Новгород',
-    link: 'http://sikhirtya.ru/mesto/img/gal-4.jpg'
+    link: 'https://i.ibb.co/WW7FRXj/gal-4.jpg'
   },
   {
     name: 'Волга',
-    link: 'http://sikhirtya.ru/mesto/img/gal-5.jpg'
+    link: 'https://i.ibb.co/1R2cCRP/gal-5.jpg'
   },
   {
     name: 'Уральские горы',
-    link: 'http://sikhirtya.ru/mesto/img/gal-6.jpg'
+    link: 'https://i.ibb.co/frRCtJ3/gal-6.jpg'
   }
 ];
 
