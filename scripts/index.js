@@ -16,6 +16,8 @@ const profilePopupClose = profilePopup.querySelector('.popup__close_profile');
 const newPlacePopup = document.querySelector('.popup_new-place');
 const placePopupForm = newPlacePopup.querySelector('.popup__form_place');
 const placePopupClose = newPlacePopup.querySelector('.popup__close_new-place');
+const inputPlaceLink = newPlacePopup.querySelector('.popup__text-input_place-link');
+const inputPlaceName = newPlacePopup.querySelector('.popup__text-input_place-name');
 //image-popup
 const imagePopup = document.querySelector('.popup_image');
 const closeImagePopup = imagePopup.querySelector('.popup__close_image');
@@ -120,8 +122,6 @@ function submitProfilePopup (evt) {
 
 function submitPlacePopup (evt) {
   evt.preventDefault();
-  const inputPlaceLink = document.querySelector('.popup__text-input_place-link');
-  const inputPlaceName = document.querySelector('.popup__text-input_place-name');
   if (!inputPlaceName.value || inputPlaceName.value === 'Введите имя!') {
     return inputPlaceName.value = 'Введите имя!';
   } else if (!inputPlaceLink.value || inputPlaceLink.value === 'Введите ссылку!') {
