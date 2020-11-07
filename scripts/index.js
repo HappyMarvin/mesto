@@ -55,6 +55,17 @@ function createCard(name, source) {
   card.querySelector('.card__title').textContent = name;
   cardImage.src = source;
   cardImage.alt = name;
+  card.querySelector('.card__delete')
+    .addEventListener('click', function () {
+      deleteCard(this.closest('.card'));
+    })
+  card.querySelector('.card__like')
+    .addEventListener('click', function () {
+      switchLike(this);
+    })
+  cardImage.addEventListener('click', function () {
+      openImagePopup(this.closest('.card'));
+    })
   return card;
 }
 
@@ -72,7 +83,7 @@ function openImagePopup (card) {
   const cardTitle = card.querySelector('.card__title').textContent;
   imagePopupTitle.textContent = cardTitle;
   imagePopupImage.src = card.querySelector('.card__image').src;
-  imagePopupImage.alt = `${cardTitle} +  - полный размер`;
+  imagePopupImage.alt = `${cardTitle} - полный размер`;
   openPopup(imagePopup);
 }
 
@@ -93,18 +104,6 @@ function deleteCard(card) {
 }
 
 function addCard(card) {
-  card.querySelector('.card__delete')
-    .addEventListener('click', function () {
-      deleteCard(this.closest('.card'));
-    })
-  card.querySelector('.card__like')
-    .addEventListener('click', function () {
-      switchLike(this);
-    })
-  card.querySelector('.card__image')
-    .addEventListener('click', function () {
-      openImagePopup(this.closest('.card'));
-    })
   galleryList.prepend(card);
 }
 
