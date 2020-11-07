@@ -58,15 +58,15 @@ function createCard(name, source) {
   cardImage.src = source;
   cardImage.alt = name;
   card.querySelector('.card__delete')
-    .addEventListener('click', function () {
-      deleteCard(this.closest('.card'));
+    .addEventListener('click', evt => {
+      deleteCard(evt.target.closest('.card'));
     })
   card.querySelector('.card__like')
-    .addEventListener('click', function () {
-      switchLike(this);
+    .addEventListener('click', evt => {
+      switchLike(evt.target);
     })
-  cardImage.addEventListener('click', function () {
-      openImagePopup(this.closest('.card'));
+  cardImage.addEventListener('click', evt => {
+      openImagePopup(evt.target.closest('.card'));
     })
   return card;
 }
