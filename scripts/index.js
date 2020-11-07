@@ -25,56 +25,37 @@ const imagePopupImage = imagePopup.querySelector('.popup__image');
 const initialCards = [
   {
     name: 'Ямал',
-    link: 'http://sikhirtya.ru/mesto/img/gal-1.jpg'
+    link: 'https://i.ibb.co/4pbMPYn/gal-1.jpg'
   },
   {
     name: 'Ямальская тундра',
-    link: 'http://sikhirtya.ru/mesto/img/gal-2.jpg'
+    link: 'https://i.ibb.co/cCNzL1d/gal-2.jpg'
   },
   {
     name: 'Башня Врангеля',
-    link: 'http://sikhirtya.ru/mesto/img/gal-3.jpg'
+    link: 'https://i.ibb.co/BBJ43ps/gal-3.jpg'
   },
   {
     name: 'Великий Новгород',
-    link: 'http://sikhirtya.ru/mesto/img/gal-4.jpg'
+    link: 'https://i.ibb.co/WW7FRXj/gal-4.jpg'
   },
   {
     name: 'Волга',
-    link: 'http://sikhirtya.ru/mesto/img/gal-5.jpg'
+    link: 'https://i.ibb.co/1R2cCRP/gal-5.jpg'
   },
   {
     name: 'Уральские горы',
-    link: 'http://sikhirtya.ru/mesto/img/gal-6.jpg'
+    link: 'https://i.ibb.co/frRCtJ3/gal-6.jpg'
   }
 ];
 
 function createCard(name, source) {
   const card = cardTemplate.cloneNode(true);
+  const cardImage = card.querySelector('.card__title');
   card.querySelector('.card__title').textContent = name;
-  card.querySelector('.card__image').src = source;
-  card.querySelector('.card__image').alt = name;
+  cardImage.src = source;
+  cardImage.alt = name;
   return card;
-}
-
-function addCard(card) {
-  card.querySelector('.card__delete')
-      .addEventListener('click', function () {
-        deleteCard(this.closest('.card'));
-      })
-  card.querySelector('.card__like')
-      .addEventListener('click', function () {
-        switchLike(this);
-      })
-  card.querySelector('.card__image')
-      .addEventListener('click', function () {
-        openImagePopup(this.closest('.card'));
-      })
-  galleryList.prepend(card);
-}
-
-function addArrayCards(arrayCards) {
-  arrayCards.reverse().forEach(item => addCard(createCard(item.name, item.link)));
 }
 
 function openPopup(popup) {
@@ -95,9 +76,40 @@ function openImagePopup (card) {
   openPopup(imagePopup);
 }
 
+function cleanInputs (popup) {
+  popup.querySelectorAll('input').forEach(input => input.value = '');
+}
+
 function closePopup (popup) {
   popup.classList.remove('popup_show');
-  popup.querySelectorAll('input').forEach(input => input.value = '');
+}
+
+function switchLike(card) {
+  card.classList.toggle('card__like_active');
+}
+
+function deleteCard(card) {
+  card.remove();
+}
+
+function addCard(card) {
+  card.querySelector('.card__delete')
+    .addEventListener('click', function () {
+      deleteCard(this.closest('.card'));
+    })
+  card.querySelector('.card__like')
+    .addEventListener('click', function () {
+      switchLike(this);
+    })
+  card.querySelector('.card__image')
+    .addEventListener('click', function () {
+      openImagePopup(this.closest('.card'));
+    })
+  galleryList.prepend(card);
+}
+
+function addArrayCards(arrayCards) {
+  arrayCards.reverse().forEach(item => addCard(createCard(item.name, item.link)));
 }
 
 function submitProfilePopup (evt) {
@@ -120,14 +132,6 @@ function submitPlacePopup (evt) {
   closePopup(newPlacePopup);
 }
 
-function switchLike(card) {
-  card.classList.toggle('card__like_active');
-}
-
-function deleteCard(card) {
-  card.remove();
-}
-
 addArrayCards(initialCards);
 
 profileButtonEdit.addEventListener('click', openProfilePopup);
@@ -135,7 +139,10 @@ profilePopupClose.addEventListener('click', () => closePopup(profilePopup));
 profilePopupForm.addEventListener('submit', submitProfilePopup);
 
 profileButtonAdd.addEventListener('click', () => openPopup(newPlacePopup));
-placePopupClose.addEventListener('click', () => closePopup(newPlacePopup));
+placePopupClose.addEventListener('click', () => {
+  closePopup(newPlacePopup);
+  cleanInputs(newPlacePopup);
+});
 placePopupForm.addEventListener('submit', submitPlacePopup);
 
 closeImagePopup.addEventListener('click', () => closePopup(imagePopup));
