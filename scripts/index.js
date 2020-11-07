@@ -16,6 +16,8 @@ const profilePopupClose = profilePopup.querySelector('.popup__close_profile');
 const newPlacePopup = document.querySelector('.popup_new-place');
 const placePopupForm = newPlacePopup.querySelector('.popup__form_place');
 const placePopupClose = newPlacePopup.querySelector('.popup__close_new-place');
+const inputPlaceLink = newPlacePopup.querySelector('.popup__text-input_place-link');
+const inputPlaceName = newPlacePopup.querySelector('.popup__text-input_place-name');
 //image-popup
 const imagePopup = document.querySelector('.popup_image');
 const closeImagePopup = imagePopup.querySelector('.popup__close_image');
@@ -55,6 +57,17 @@ function createCard(name, source) {
   card.querySelector('.card__title').textContent = name;
   cardImage.src = source;
   cardImage.alt = name;
+  card.querySelector('.card__delete')
+    .addEventListener('click', function () {
+      deleteCard(this.closest('.card'));
+    })
+  card.querySelector('.card__like')
+    .addEventListener('click', function () {
+      switchLike(this);
+    })
+  cardImage.addEventListener('click', function () {
+      openImagePopup(this.closest('.card'));
+    })
   return card;
 }
 
@@ -72,7 +85,7 @@ function openImagePopup (card) {
   const cardTitle = card.querySelector('.card__title').textContent;
   imagePopupTitle.textContent = cardTitle;
   imagePopupImage.src = card.querySelector('.card__image').src;
-  imagePopupImage.alt = cardTitle + ' - полный размер';
+  imagePopupImage.alt = `${cardTitle} - полный размер`;
   openPopup(imagePopup);
 }
 
@@ -93,18 +106,6 @@ function deleteCard(card) {
 }
 
 function addCard(card) {
-  card.querySelector('.card__delete')
-    .addEventListener('click', function () {
-      deleteCard(this.closest('.card'));
-    })
-  card.querySelector('.card__like')
-    .addEventListener('click', function () {
-      switchLike(this);
-    })
-  card.querySelector('.card__image')
-    .addEventListener('click', function () {
-      openImagePopup(this.closest('.card'));
-    })
   galleryList.prepend(card);
 }
 
@@ -121,15 +122,9 @@ function submitProfilePopup (evt) {
 
 function submitPlacePopup (evt) {
   evt.preventDefault();
-  const inputPlaceLink = document.querySelector('.popup__text-input_place-link');
-  const inputPlaceName = document.querySelector('.popup__text-input_place-name');
-  if (!inputPlaceName.value || inputPlaceName.value === 'Введите имя!') {
-    return inputPlaceName.value = 'Введите имя!';
-  } else if (!inputPlaceLink.value || inputPlaceLink.value === 'Введите ссылку!') {
-    return inputPlaceLink.value = 'Введите ссылку!';
-  }
   addCard(createCard(inputPlaceName.value, inputPlaceLink.value));
   closePopup(newPlacePopup);
+  cleanInputs(newPlacePopup);
 }
 
 addArrayCards(initialCards);
