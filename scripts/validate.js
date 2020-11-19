@@ -21,6 +21,7 @@ function hideInputError(validConfig, formElement, inputElement) {
   errorElement.textContent = '';
   errorElement.classList.remove(validConfig.errorClass);
 }
+
 function hasInvalidInput(inputList) {
   return inputList.some(inputElement => {
     return !inputElement.validity.valid;
