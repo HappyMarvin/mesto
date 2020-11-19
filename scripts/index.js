@@ -115,8 +115,6 @@ function addArrayCards(arrayCards) {
 
 function submitProfilePopup (evt) {
   evt.preventDefault();
-  const inputList = Array.from(profilePopupForm.querySelectorAll('.popup__text-input'));
-  if (hasInvalidInput(inputList)) return
   profileName.textContent = inputProfileName.value;
   profileDescription.textContent = inputProfileDescription.value;
   closePopup(profilePopup);
@@ -124,8 +122,6 @@ function submitProfilePopup (evt) {
 
 function submitPlacePopup (evt) {
   evt.preventDefault();
-  const inputList = Array.from(placePopupForm.querySelectorAll('.popup__text-input'));
-  if (hasInvalidInput(inputList)) return
   addCard(createCard(inputPlaceName.value, inputPlaceLink.value));
   closePopup(newPlacePopup);
   cleanInputs(newPlacePopup);
