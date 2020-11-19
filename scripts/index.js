@@ -125,6 +125,7 @@ function submitPlacePopup (evt) {
   addCard(createCard(inputPlaceName.value, inputPlaceLink.value));
   closePopup(newPlacePopup);
   cleanInputs(newPlacePopup);
+  resetValidationState (validConfig, evt.target);
 }
 
 addArrayCards(initialCards);
@@ -141,3 +142,18 @@ placePopupClose.addEventListener('click', () => {
 placePopupForm.addEventListener('submit', submitPlacePopup);
 
 closeImagePopup.addEventListener('click', () => closePopup(imagePopup));
+
+document.addEventListener('click', evt => {
+  if (evt.target.classList.contains('popup')) {
+    closePopup(evt.target);
+    cleanInputs(evt.target);
+  }
+})
+
+document.addEventListener('keydown', evt => {
+  const popup = document.querySelector('.popup_show');
+  if (evt.key == 'Escape' && popup) {
+    closePopup(popup);
+    cleanInputs(popup);
+  }
+})
