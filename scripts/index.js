@@ -24,39 +24,14 @@ const closeImagePopup = imagePopup.querySelector('.popup__close_image');
 const imagePopupTitle = imagePopup.querySelector('.popup__image-title');
 const imagePopupImage = imagePopup.querySelector('.popup__image');
 
-const initialCards = [
-  {
-    name: 'Ямал',
-    link: 'https://i.ibb.co/4pbMPYn/gal-1.jpg'
-  },
-  {
-    name: 'Ямальская тундра',
-    link: 'https://i.ibb.co/cCNzL1d/gal-2.jpg'
-  },
-  {
-    name: 'Башня Врангеля',
-    link: 'https://i.ibb.co/BBJ43ps/gal-3.jpg'
-  },
-  {
-    name: 'Великий Новгород',
-    link: 'https://i.ibb.co/WW7FRXj/gal-4.jpg'
-  },
-  {
-    name: 'Волга',
-    link: 'https://i.ibb.co/1R2cCRP/gal-5.jpg'
-  },
-  {
-    name: 'Уральские горы',
-    link: 'https://i.ibb.co/frRCtJ3/gal-6.jpg'
-  }
-];
-
 function createCard(name, source) {
   const card = cardTemplate.cloneNode(true);
   const cardImage = card.querySelector('.card__image');
+
   card.querySelector('.card__title').textContent = name;
   cardImage.src = source;
   cardImage.alt = name;
+
   card.querySelector('.card__delete')
     .addEventListener('click', evt => {
       deleteCard(evt.target.closest('.card'));
@@ -71,7 +46,25 @@ function createCard(name, source) {
   return card;
 }
 
+function closeClickListener (evt) {
+  if (evt.target.classList.contains('popup')) {
+    closePopup(evt.target);
+    cleanInputs(evt.target);
+  }
+}
+
+function closeEscListener (evt) {
+  const popup = document.querySelector('.popup_show');
+  if (evt.key == 'Escape') {
+    closePopup(popup);
+    cleanInputs(popup);
+  }
+}
+
 function openPopup(popup) {
+  popup.addEventListener('mousedown', closeClickListener);
+  document.addEventListener('keydown', closeEscListener);
+  popup.classList.add('popup_show');
   popup.classList.add('popup_show');
 }
 
@@ -94,6 +87,9 @@ function cleanInputs (popup) {
 }
 
 function closePopup (popup) {
+  popup.removeEventListener('mousedown', closeClickListener);
+  console.log('11');
+  document.removeEventListener('keydown', closeEscListener);
   popup.classList.remove('popup_show');
 }
 
@@ -142,18 +138,3 @@ placePopupClose.addEventListener('click', () => {
 placePopupForm.addEventListener('submit', submitPlacePopup);
 
 closeImagePopup.addEventListener('click', () => closePopup(imagePopup));
-
-document.addEventListener('mousedown', evt => {
-  if (evt.target.classList.contains('popup')) {
-    closePopup(evt.target);
-    cleanInputs(evt.target);
-  }
-})
-
-document.addEventListener('keydown', evt => {
-  const popup = document.querySelector('.popup_show');
-  if (evt.key == 'Escape' && popup) {
-    closePopup(popup);
-    cleanInputs(popup);
-  }
-})
