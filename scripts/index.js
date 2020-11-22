@@ -25,7 +25,7 @@ const imagePopupTitle = imagePopup.querySelector('.popup__image-title');
 const imagePopupImage = imagePopup.querySelector('.popup__image');
 
 function createCard(name, source) {
-  const card = cardTemplate.cloneNode(true);
+  const card = cardTemplate.querySelector('.card').cloneNode(true);
   const cardImage = card.querySelector('.card__image');
 
   card.querySelector('.card__title').textContent = name;
@@ -34,14 +34,14 @@ function createCard(name, source) {
 
   card.querySelector('.card__delete')
     .addEventListener('click', evt => {
-      deleteCard(evt.target.closest('.card'));
+      deleteCard(card);
     })
   card.querySelector('.card__like')
     .addEventListener('click', evt => {
       switchLike(evt.target);
     })
   cardImage.addEventListener('click', evt => {
-      openImagePopup(evt.target.closest('.card'));
+      openImagePopup(card);
     })
   return card;
 }
@@ -88,7 +88,6 @@ function cleanInputs (popup) {
 
 function closePopup (popup) {
   popup.removeEventListener('mousedown', closeClickListener);
-  console.log('11');
   document.removeEventListener('keydown', closeEscListener);
   popup.classList.remove('popup_show');
 }
