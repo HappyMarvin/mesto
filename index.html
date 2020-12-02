@@ -37,7 +37,7 @@
 </div>
 
 <section class="popup popup_profile">
-  <form action="#" class="popup__form popup__form_profile" name="popup-form">
+  <form action="#" class="popup__form popup__form_profile" name="popup-form" novalidate>
     <h2 class="popup__title">Редактировать профиль</h2>
     <input type="text"
            name="popup-name"
@@ -57,8 +57,8 @@
            id="profile-description"
            placeholder="Вид деятельности">
     <span class="popup__error" id="profile-description-error"></span>
-    <button class="popup__submit" type="submit" name="popup-submit">Сохранить</button>
-    <button class="popup__close popup__close_profile" type="button" aria-label="Закрыть форму"></button>
+    <button class="popup__submit popup__submit_disabled" type="submit" name="popup-submit" disabled>Сохранить</button>
+    <button class="popup__close popup__close_profile" type="button" aria-label="Закрыть форму"</button>
   </form>
 </section>
 
@@ -71,7 +71,7 @@
 </section>
 
 <section class="popup popup_new-place">
-  <form action="#" class="popup__form popup__form_place" name="popup-form">
+  <form action="#" class="popup__form popup__form_place" name="popup-form" novalidate>
     <h2 class="popup__title">Новое место</h2>
     <input type="text"
            name="popup-name"
