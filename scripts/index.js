@@ -1,6 +1,6 @@
 import {Card} from './Card.js';
 import {FormValidator} from "./FormValidator.js";
-import {initialCards} from './initial-cards.js'
+import {initialCards} from './initial-cards.js';
 import {validConfig} from "./valid-config.js";
 
 const galleryList = document.querySelector('.gallery__list');
@@ -32,16 +32,16 @@ const eventClosePopup = new CustomEvent('closePopup');
 
 function closeClickListener (evt) {
   if (evt.target.classList.contains('popup')) {
-    closePopup(evt.target);
     cleanInputs(evt.target);
+    closePopup(evt.target);
   }
 }
 
 function closeEscListener (evt) {
   const popup = document.querySelector('.popup_show');
   if (evt.key == 'Escape') {
-    closePopup(popup);
     cleanInputs(popup);
+    closePopup(popup);
   }
 }
 
@@ -86,8 +86,7 @@ function addCard(card) {
 
 function addArrayCards(arrayCards) {
   arrayCards.reverse().forEach(item => {
-    const card = new Card(item.name, item.link, '#card-template');
-    addCard(card.createCard());
+    createCard(item.name, item.link);
   });
 }
 
@@ -95,29 +94,34 @@ function submitProfilePopup (evt) {
   evt.preventDefault();
   profileName.textContent = inputProfileName.value;
   profileDescription.textContent = inputProfileDescription.value;
+  cleanInputs(profilePopup);
   closePopup(profilePopup);
+}
+function createCard(name, value) {
+  const card = new Card(name, value, '#card-template');
+  addCard(card.createCard());
 }
 
 function submitPlacePopup (evt) {
   evt.preventDefault();
-  const card = new Card(inputPlaceName.value, inputPlaceLink.value, '#card-template');
-  addCard(card.createCard());
-  closePopup(newPlacePopup);
+  createCard(inputPlaceName.value, inputPlaceLink.value);
   cleanInputs(newPlacePopup);
+  closePopup(newPlacePopup);
 }
 
 addArrayCards(initialCards);
 
 profileButtonEdit.addEventListener('click', openProfilePopup);
 profilePopupClose.addEventListener('click', () => {
-  closePopup(profilePopup)
+  cleanInputs(profilePopup);
+  closePopup(profilePopup);
 });
 profilePopupForm.addEventListener('submit', submitProfilePopup);
 
 profileButtonAdd.addEventListener('click', () => openPopup(newPlacePopup));
 placePopupClose.addEventListener('click', () => {
-  closePopup(newPlacePopup);
   cleanInputs(newPlacePopup);
+  closePopup(newPlacePopup);
 });
 placePopupForm.addEventListener('submit', submitPlacePopup);
 
