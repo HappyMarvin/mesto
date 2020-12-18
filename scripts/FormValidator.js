@@ -51,9 +51,6 @@ class FormValidator {
         this._toggleButtonState();
       })
     })
-    this._formElement.addEventListener('submit', () => {
-      this._resetValidationState();
-    })
     this._formElement.addEventListener('closePopup', () => {
       this._resetValidationState();
     })

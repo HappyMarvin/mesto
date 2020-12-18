@@ -1,7 +1,7 @@
 export const initialCards = [
   {
     name: 'Ямал',
-    link: 'https://i.ibb.co/4pbMPYn/gal-1.jpg'
+    link: '../images/gal-1.jpg'
   },
   {
     name: 'Ямальская тундра',
