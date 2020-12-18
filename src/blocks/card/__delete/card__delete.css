@@ -9,12 +9,12 @@
   background-image: url("../../../images/trash.svg");
   background-repeat: no-repeat;
   background-size: contain;
-  transition: opacity .3s;
+  transition: opacity 0.3s;
   cursor: pointer;
 }
 
 .card__delete:hover {
-  opacity: .6;
+  opacity: 0.6;
 }
 
 .card__delete:focus {

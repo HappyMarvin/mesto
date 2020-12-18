@@ -8,10 +8,10 @@
   border: none;
   background: none;
   cursor: pointer;
-  transition: opacity .3s;
+  transition: opacity 0.3s;
 }
 
-.popup__close:before {
+.popup__close::before {
   content: '';
   position: absolute;
   border: 2px solid #fff;
@@ -22,7 +22,7 @@
   top: calc(50% - 2px);
 }
 
-.popup__close:after {
+.popup__close::after {
   content: '';
   position: absolute;
   border: 2px solid #fff;
@@ -34,7 +34,7 @@
 }
 
 .popup__close:hover {
-  opacity: .8;
+  opacity: 0.8;
 }
 
 .popup__close:focus {
@@ -52,13 +52,13 @@
     top: -45px;
   }
 
-  .popup__close:before {
+  .popup__close::before {
     border: 1px solid #fff;
     height: 2px;
     top: calc(50% - 1px);
   }
 
-  .popup__close:after {
+  .popup__close::after {
     border: 1px solid #fff;
     width: 2px;
     left: calc(50% - 1px);
