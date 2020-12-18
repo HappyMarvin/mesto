@@ -1,7 +1,7 @@
 const initialCards = [
   {
     name: 'Ямал',
-    link: '../images/gal-1.jpg'
+    link: 'https://i.ibb.co/4pbMPYn/gal-1.jpg'
   },
   {
     name: 'Ямальская тундра',
