@@ -1,21 +1,21 @@
 .profile__edit {
   width: 24px;
   height: 24px;
-  background-color:#000;
+  background-color: #000;
   border: 1px solid #fff;
   box-sizing: border-box;
   cursor: pointer;
-  transition: opacity .3s;
+  transition: opacity 0.3s;
   position: relative;
   overflow: hidden;
   margin-right: auto;
 }
 
 .profile__edit:hover {
-  opacity: .6;
+  opacity: 0.6;
 }
 
-.profile__edit:before {
+.profile__edit::before {
   content: '';
   position: absolute;
   width: 100%;
@@ -26,10 +26,10 @@
   background-size: 10px;
   background-position: center;
   background-repeat: no-repeat;
-  transition: transform .3s;
+  transition: transform 0.3s;
 }
 
-.profile__edit:hover:before {
+.profile__edit:hover::before {
   transform: rotate(90deg);
 }
 
@@ -40,7 +40,8 @@
     transform: translate(4px, -2px);
     margin: 25px 0 0 3px;
   }
-  .profile__edit:before {
+
+  .profile__edit::before {
     background-size: 8px;
   }
 }

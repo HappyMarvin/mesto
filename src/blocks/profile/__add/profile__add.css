@@ -9,10 +9,10 @@
   background-color: #000;
   position: relative;
   cursor: pointer;
-  transition: opacity .3s;
+  transition: opacity 0.3s;
 }
 
-.profile__add:before {
+.profile__add::before {
   content: '';
   position: absolute;
   border: 1px solid #fff;
@@ -23,7 +23,7 @@
   top: calc(50% - 1px);
 }
 
-.profile__add:after {
+.profile__add::after {
   content: '';
   position: absolute;
   border: 1px solid #fff;
@@ -35,7 +35,7 @@
 }
 
 .profile__add:hover {
-  opacity: .6;
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 588px) {

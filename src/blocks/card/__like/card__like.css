@@ -6,7 +6,7 @@
   background-size: contain;
   border: none;
   margin-left: 18px;
-  transition: opacity .3s;
+  transition: opacity 0.3s;
   box-sizing: border-box;
 }
 
@@ -15,5 +15,5 @@
 }
 
 .card__like:hover {
-  opacity: .6;
+  opacity: 0.6;
 }
