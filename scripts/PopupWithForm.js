@@ -17,7 +17,7 @@ export default class PopupWithForm extends Popup{
     return this._formValues;
   }
 
-  setInputValues (...values) {
+  setInputValues (values) {
     this._inputList.forEach((input, index) => {
       input.value = values[index];
     })
@@ -26,7 +26,7 @@ export default class PopupWithForm extends Popup{
   open(data) {
     super.open();
     if (data) {
-      this.setInputValues(...data);
+      this.setInputValues(Object.values(data));
     }
   }
 
