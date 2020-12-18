@@ -1,4 +1,4 @@
-class FormValidator {
+export default class FormValidator {
   constructor(validConfig, formElement) {
     this._validConfig = validConfig;
     this._formElement = formElement;
@@ -51,9 +51,6 @@ class FormValidator {
         this._toggleButtonState();
       })
     })
-    this._formElement.addEventListener('submit', () => {
-      this._resetValidationState();
-    })
     this._formElement.addEventListener('closePopup', () => {
       this._resetValidationState();
     })
@@ -70,5 +67,3 @@ class FormValidator {
     this._setEventListeners();
   }
 }
-
-export {FormValidator};

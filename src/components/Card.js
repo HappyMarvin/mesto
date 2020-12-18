@@ -1,20 +1,25 @@
-import {openImagePopup} from "./index.js";
 
-class Card {
-  constructor(name, sourceImage, templateSelector) {
+export default class Card {
+  constructor(name, sourceImage, templateSelector, handleCardClick) {
     this._name = name;
     this._sourceImage = sourceImage;
     this._templateSelector = templateSelector;
+    this._handleCardClick = handleCardClick;
+    this._cardTemplate = document.querySelector(this._templateSelector).content;
+    this.card = this._cardTemplate.querySelector('.card').cloneNode(true);
+    this._cardImage = this.card.querySelector('.card__image');
+    this._likeButton = this.card.querySelector('.card__like');
+    this._deleteButton = this.card.querySelector('.card__delete');
   }
 
   _addContent () {
-    this._card.querySelector('.card__title').textContent = this._name;
+    this.card.querySelector('.card__title').textContent = this._name;
     this._cardImage.src = this._sourceImage;
     this._cardImage.alt = this._name;
   }
 
   _deleteCard () {
-    this._card.remove();
+    this.card.remove();
   }
 
   _switchLike() {
@@ -29,22 +34,13 @@ class Card {
       this._switchLike();
     })
     this._cardImage.addEventListener('click', () => {
-      openImagePopup(this._card);
+      this._handleCardClick(this.card);
     })
   }
 
   createCard () {
-    this._cardTemplate = document.querySelector(this._templateSelector).content;
-    this._card = this._cardTemplate.querySelector('.card').cloneNode(true);
-    this._cardImage = this._card.querySelector('.card__image');
-    this._likeButton = this._card.querySelector('.card__like');
-    this._deleteButton = this._card.querySelector('.card__delete');
-
     this._addContent();
     this._addListeners();
-
-    return this._card
+    return this.card
   }
 }
-
-export {Card}
