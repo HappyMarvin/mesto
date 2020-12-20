@@ -20,6 +20,7 @@ export default class Card {
 
   _deleteCard () {
     this.card.remove();
+    this.card = null;
   }
 
   _switchLike() {

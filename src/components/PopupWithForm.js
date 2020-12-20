@@ -17,9 +17,10 @@ export default class PopupWithForm extends Popup{
     return this._formValues;
   }
 
-  setInputValues (values) {
-    this._inputList.forEach((input, index) => {
-      input.value = values[index];
+  setInputValues (data) {
+    Object.keys(data).forEach(name => {
+      const input = this.form.querySelector(`input[name=popup-${name}]`)
+      input.value = data[name];
     })
   }
 
@@ -30,16 +31,9 @@ export default class PopupWithForm extends Popup{
     }
   }
 
-  _resetForm() {
-    Object.keys(data).forEach(name => {
-      const input = this.form.querySelector(`input[name=popup-${name}]`)
-      input.value = data[name];
-    })
-  }
-
   close() {
     super.close();
-    this._resetForm();
+    this.form.reset();
     this.form.dispatchEvent(this._eventClosePopup);
   }
 
@@ -57,5 +51,4 @@ export default class PopupWithForm extends Popup{
     super._removeEventListeners();
     this.form.removeEventListener('submit', this._listener)
   }
-
 }
