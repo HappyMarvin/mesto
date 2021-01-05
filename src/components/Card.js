@@ -1,8 +1,8 @@
 
 export default class Card {
-  constructor(name, sourceImage, templateSelector, handleCardClick) {
-    this._name = name;
-    this._sourceImage = sourceImage;
+  constructor(data, templateSelector, owner, handleCardClick) {
+    this._name = data.name;
+    this._sourceImage = data.link;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
     this._cardTemplate = document.querySelector(this._templateSelector).content;
@@ -10,12 +10,17 @@ export default class Card {
     this._cardImage = this.card.querySelector('.card__image');
     this._likeButton = this.card.querySelector('.card__like');
     this._deleteButton = this.card.querySelector('.card__delete');
+    this._likeCount = this.card.querySelector('.card__like-count');
+    this._owner = owner;
+    this._likes = data.likes;
   }
 
   _addContent () {
     this.card.querySelector('.card__title').textContent = this._name;
     this._cardImage.src = this._sourceImage;
     this._cardImage.alt = this._name;
+    if (this._owner ) this._deleteButton.style.display = 'block';
+    this._likeCount.textContent = this._likes.length;
   }
 
   _deleteCard () {
