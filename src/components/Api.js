@@ -12,9 +12,6 @@ export default class Api {
         if (res.ok) return res.json()
         return Promise.reject(new Error(`Ошибка: ${res.status}`))
       })
-      .then((result) => {
-        return result;
-      });
   }
 
   setUserData(data) {
@@ -30,9 +27,6 @@ export default class Api {
         if (res.ok) return res.json()
         return Promise.reject(new Error(`Ошибка: ${res.status}`))
       })
-      .then((result) => {
-        return result;
-      });
   }
 
   getInitialCards () {
@@ -43,9 +37,6 @@ export default class Api {
         if (res.ok) return res.json()
         return Promise.reject(new Error(`Ошибка: ${res.status}`))
       })
-      .then((result) => {
-        return result;
-      });
   }
 
   addCard(data) {
@@ -61,8 +52,16 @@ export default class Api {
         if (res.ok) return res.json()
         return Promise.reject(new Error(`Ошибка: ${res.status}`))
       })
-      .then((result) => {
-        return result;
-      });
+  }
+
+  deleteCard(data) {
+    return fetch(`${this._baseUrl}cards/${data.id}`, {
+      method: 'DELETE',
+      headers: this._headers
+    })
+      .then(res => {
+        if (res.ok) return res.json()
+        return Promise.reject(new Error(`Ошибка: ${res.status}`))
+      })
   }
 }

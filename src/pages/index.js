@@ -7,6 +7,7 @@ import UserInfo from "../components/UserInfo.js";
 import Section from "../components/Section.js";
 import { validConfig, profileButtonEdit, profileButtonAdd } from "../utils/contains.js";
 import Api from "../components/Api";
+import PopupDeleteCard from "../components/PopupDeleteCard";
 
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-19/',
@@ -22,7 +23,12 @@ const userInfo = new UserInfo(
   '.profile__avatar');
 
 const popupWithImage = new PopupWithImage('.popup_image');
-
+const popupDeleteCard = new PopupDeleteCard('.popup_delete', (card) => {
+  api.deleteCard(card)
+    .then(() => {
+      card.deleteCard();
+    })
+});
 
 const popupProfile = new PopupWithForm('.popup_profile', (data) => {
   api.setUserData({ name: data['popup-name'], about: data['popup-description'] })
@@ -40,11 +46,13 @@ api.getUserData()
     return info;
   })
   .catch(e => console.error(e.message))
-  .then(userInfo => {
+  .then(userData => {
     const cardSection = new Section({ renderer: (data) => {
-        const owner = data.owner._id === userInfo._id;
+        const owner = data.owner._id === userData._id;
         const card = new Card(data, '#card-template', owner, () => {
           popupWithImage.open(card.card);
+        }, () => {
+          popupDeleteCard.open(card)
         });
         cardSection.addItem(card.createCard());
       } }, '.gallery__list');
