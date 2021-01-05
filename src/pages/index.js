@@ -28,6 +28,7 @@ const popupDeleteCard = new PopupDeleteCard('.popup_delete', (card) => {
     .then(() => {
       card.deleteCard();
     })
+    .catch(e => console.error(e.message))
 });
 
 const popupProfile = new PopupWithForm('.popup_profile', (data) => {
@@ -48,12 +49,20 @@ api.getUserData()
   .catch(e => console.error(e.message))
   .then(userData => {
     const cardSection = new Section({ renderer: (data) => {
-        const owner = data.owner._id === userData._id;
-        const card = new Card(data, '#card-template', owner, () => {
+        const card = new Card(data,
+          '#card-template',
+          userData._id,
+          () => {
           popupWithImage.open(card.card);
-        }, () => {
+        },
+          () => {
           popupDeleteCard.open(card)
-        });
+        },
+          () => {
+          const method = card.liked ? 'DELETE' : 'PUT';
+           return api.switchLike(card, method)
+            .catch(e => console.error(e.message))
+          });
         cardSection.addItem(card.createCard());
       } }, '.gallery__list');
 

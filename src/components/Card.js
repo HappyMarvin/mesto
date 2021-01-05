@@ -1,20 +1,27 @@
 
 export default class Card {
-  constructor(data, templateSelector, owner, handleCardClick, handleDeleteClick) {
+  constructor(data, templateSelector, userID, handleCardClick, handleDeleteClick, handleLikeClick) {
     this._name = data.name;
     this.id = data._id;
     this._sourceImage = data.link;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
     this._handleDeleteClick = handleDeleteClick;
+    this._handleLikeClick = handleLikeClick;
     this._cardTemplate = document.querySelector(this._templateSelector).content;
     this.card = this._cardTemplate.querySelector('.card').cloneNode(true);
     this._cardImage = this.card.querySelector('.card__image');
     this._likeButton = this.card.querySelector('.card__like');
     this._deleteButton = this.card.querySelector('.card__delete');
     this._likeCount = this.card.querySelector('.card__like-count');
-    this._owner = owner;
+    this._owner = userID === data.owner._id;
     this._likes = data.likes;
+    this.liked = false;
+    if (this.isLiked(userID)) this._switchLike();
+  }
+
+  isLiked(userID) {
+    return this.liked = this._likes.some(like => like._id === userID);
   }
 
   _addContent () {
@@ -39,7 +46,12 @@ export default class Card {
       this._handleDeleteClick();
       })
     this._likeButton.addEventListener('click', () => {
-      this._switchLike();
+      this._handleLikeClick()
+        .then((data) => {
+          this._likeCount.textContent = data.likes.length;
+          this._switchLike();
+          this.liked = !this.liked;
+        })
     })
     this._cardImage.addEventListener('click', () => {
       this._handleCardClick(this.card);

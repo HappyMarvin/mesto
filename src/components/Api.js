@@ -64,4 +64,15 @@ export default class Api {
         return Promise.reject(new Error(`Ошибка: ${res.status}`))
       })
   }
+
+  switchLike(data, method) {
+    return fetch(`${this._baseUrl}cards/likes/${data.id}`, {
+      method: method,
+      headers: this._headers
+    })
+      .then(res => {
+        if (res.ok) return res.json()
+        return Promise.reject(new Error(`Ошибка: ${res.status}`))
+      })
+  }
 }
