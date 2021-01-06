@@ -1,13 +1,13 @@
 import './index.css';
-import Card from '../components/Card.js';
-import FormValidator from "../components/FormValidator.js";
-import PopupWithImage from "../components/PopupWithImage.js";
-import PopupWithForm from "../components/PopupWithForm.js";
-import UserInfo from "../components/UserInfo.js";
-import Section from "../components/Section.js";
-import { validConfig, profileButtonEdit, profileButtonAdd, addAvatarButton } from "../utils/contains.js";
-import Api from "../components/Api";
+import Card from '../components/Card';
+import FormValidator from "../components/FormValidator";
+import PopupWithImage from "../components/PopupWithImage";
+import PopupWithForm from "../components/PopupWithForm";
 import PopupDeleteCard from "../components/PopupDeleteCard";
+import UserInfo from "../components/UserInfo";
+import Section from "../components/Section";
+import {validConfig, profileButtonEdit, profileButtonAdd, addAvatarButton} from "../utils/contains";
+import Api from "../components/Api";
 
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-19/',
@@ -24,50 +24,49 @@ const userInfo = new UserInfo(
 
 const popupWithImage = new PopupWithImage('.popup_image');
 const popupDeleteCard = new PopupDeleteCard('.popup_delete', (card) => {
-  api.deleteCard(card)
+  return api.deleteCard(card)
     .then(() => {
       card.deleteCard();
     })
 });
 
 const popupProfile = new PopupWithForm('.popup_profile', (data) => {
-  api.setUserData({ name: data['popup-name'], about: data['popup-description'] })
+  return api.setUserData({name: data['popup-name'], about: data['popup-description']})
     .then(data => {
-      userInfo.setUserInfo({ name: data.name, description: data.about});
-      userInfo.setUserAvatar(data.avatar);
+      userInfo.setUserInfo({name: data.name, description: data.about});
     })
 });
 
 const popupAddAvatar = new PopupWithForm('.popup_add-avatar', (data) => {
-  api.addAvatar(data['avatar-link'])
+  return api.addAvatar(data['avatar-link'])
     .then((data) => {
       userInfo.setUserAvatar(data.avatar);
     })
 });
 
 api.getUserData()
-  .then(info => {
-    userInfo.setUserInfo({ name: info.name, description: info.about});
-    userInfo.setUserAvatar(info.avatar);
-    return info;
-  })
   .then(userData => {
-    const cardSection = new Section({ renderer: (data) => {
+    userInfo.setUserInfo({name: userData.name, description: userData.about});
+    userInfo.setUserAvatar(userData.avatar);
+
+    const cardSection = new Section({
+      renderer: (data) => {
         const card = new Card(data,
           '#card-template',
           userData._id,
           () => {
-          popupWithImage.open(card.card);
-        },
+            popupWithImage.open(card.card);
+          },
           () => {
-          popupDeleteCard.open(card)
-        },
+            popupDeleteCard.open(card)
+          },
           () => {
-          const method = card.liked ? 'DELETE' : 'PUT';
-           return api.switchLike(card, method)
+            const method = card.liked ? 'DELETE' : 'PUT';
+            return api.switchLike(card, method)
           });
         cardSection.addItem(card.createCard());
-      } }, '.gallery__list');
+      }
+    }, '.gallery__list');
 
     api.getInitialCards()
       .then(data => {
@@ -75,7 +74,7 @@ api.getUserData()
       })
 
     const popupPlace = new PopupWithForm('.popup_new-place', (data) => {
-      api.addCard({ name: data['popup-name'], link: data['popup-description']})
+      return api.addCard({name: data['popup-name'], link: data['popup-description']})
         .then(data => {
           cardSection.renderer(data);
         })
@@ -91,7 +90,6 @@ addAvatarButton.addEventListener('click', () => popupAddAvatar.open());
 
 const addAvatarValid = new FormValidator(validConfig, popupAddAvatar.form);
 const profilePopupValid = new FormValidator(validConfig, popupProfile.form);
-
 
 profilePopupValid.enableValidation();
 addAvatarValid.enableValidation();
