@@ -12,6 +12,7 @@ export default class Api {
         if (res.ok) return res.json()
         return Promise.reject(new Error(`Ошибка: ${res.status}`))
       })
+      .catch(e => console.error(e.message))
   }
 
   setUserData(data) {
@@ -27,6 +28,7 @@ export default class Api {
         if (res.ok) return res.json()
         return Promise.reject(new Error(`Ошибка: ${res.status}`))
       })
+      .catch(e => console.error(e.message))
   }
 
   getInitialCards () {
@@ -37,6 +39,7 @@ export default class Api {
         if (res.ok) return res.json()
         return Promise.reject(new Error(`Ошибка: ${res.status}`))
       })
+      .catch(e => console.error(e.message))
   }
 
   addCard(data) {
@@ -52,6 +55,7 @@ export default class Api {
         if (res.ok) return res.json()
         return Promise.reject(new Error(`Ошибка: ${res.status}`))
       })
+      .catch(e => console.error(e.message))
   }
 
   deleteCard(data) {
@@ -63,6 +67,7 @@ export default class Api {
         if (res.ok) return res.json()
         return Promise.reject(new Error(`Ошибка: ${res.status}`))
       })
+      .catch(e => console.error(e.message))
   }
 
   switchLike(data, method) {
@@ -74,5 +79,21 @@ export default class Api {
         if (res.ok) return res.json()
         return Promise.reject(new Error(`Ошибка: ${res.status}`))
       })
+      .catch(e => console.error(e.message))
+  }
+
+  addAvatar(link) {
+    return fetch(`${this._baseUrl}users/me/avatar`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({
+        "avatar": link
+      })
+    })
+      .then(res => {
+        if (res.ok) return res.json()
+        return Promise.reject(new Error(`Ошибка: ${res.status}`))
+      })
+      .catch(e => console.error(e.message))
   }
 }

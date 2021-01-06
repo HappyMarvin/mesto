@@ -5,7 +5,7 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 import Section from "../components/Section.js";
-import { validConfig, profileButtonEdit, profileButtonAdd } from "../utils/contains.js";
+import { validConfig, profileButtonEdit, profileButtonAdd, addAvatarButton } from "../utils/contains.js";
 import Api from "../components/Api";
 import PopupDeleteCard from "../components/PopupDeleteCard";
 
@@ -28,7 +28,6 @@ const popupDeleteCard = new PopupDeleteCard('.popup_delete', (card) => {
     .then(() => {
       card.deleteCard();
     })
-    .catch(e => console.error(e.message))
 });
 
 const popupProfile = new PopupWithForm('.popup_profile', (data) => {
@@ -37,7 +36,13 @@ const popupProfile = new PopupWithForm('.popup_profile', (data) => {
       userInfo.setUserInfo({ name: data.name, description: data.about});
       userInfo.setUserAvatar(data.avatar);
     })
-    .catch(e => console.error(e.message))
+});
+
+const popupAddAvatar = new PopupWithForm('.popup_add-avatar', (data) => {
+  api.addAvatar(data['avatar-link'])
+    .then((data) => {
+      userInfo.setUserAvatar(data.avatar);
+    })
 });
 
 api.getUserData()
@@ -46,7 +51,6 @@ api.getUserData()
     userInfo.setUserAvatar(info.avatar);
     return info;
   })
-  .catch(e => console.error(e.message))
   .then(userData => {
     const cardSection = new Section({ renderer: (data) => {
         const card = new Card(data,
@@ -61,7 +65,6 @@ api.getUserData()
           () => {
           const method = card.liked ? 'DELETE' : 'PUT';
            return api.switchLike(card, method)
-            .catch(e => console.error(e.message))
           });
         cardSection.addItem(card.createCard());
       } }, '.gallery__list');
@@ -70,26 +73,28 @@ api.getUserData()
       .then(data => {
         cardSection.renderItems(data);
       })
-      .catch(e => console.error(e.message));
 
     const popupPlace = new PopupWithForm('.popup_new-place', (data) => {
       api.addCard({ name: data['popup-name'], link: data['popup-description']})
         .then(data => {
           cardSection.renderer(data);
         })
-        .catch(e => console.error(e.message));
     });
 
-    profileButtonEdit.addEventListener('click', () => popupProfile.open(userInfo.getUserInfo()));
     profileButtonAdd.addEventListener('click', () => popupPlace.open());
-
     const newPlacePopupValid = new FormValidator(validConfig, popupPlace.form);
-    const profilePopupValid = new FormValidator(validConfig, popupProfile.form);
-
     newPlacePopupValid.enableValidation();
-    profilePopupValid.enableValidation();
   })
 
+profileButtonEdit.addEventListener('click', () => popupProfile.open(userInfo.getUserInfo()));
+addAvatarButton.addEventListener('click', () => popupAddAvatar.open());
+
+const addAvatarValid = new FormValidator(validConfig, popupAddAvatar.form);
+const profilePopupValid = new FormValidator(validConfig, popupProfile.form);
+
+
+profilePopupValid.enableValidation();
+addAvatarValid.enableValidation();
 
 
 
