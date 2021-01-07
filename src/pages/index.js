@@ -96,6 +96,7 @@ Promise.all([
     newPlacePopupValid.enableValidation();
     popupPlace.setEventListeners();
   })
+  .catch(e => console.error(e.message))
 
 profileButtonEdit.addEventListener('click', () => popupProfile.open(userInfo.getUserInfo()));
 addAvatarButton.addEventListener('click', () => popupAddAvatar.open());
