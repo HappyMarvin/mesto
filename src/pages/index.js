@@ -1,3 +1,4 @@
+//Арина, огромное спасибо за ревью! Ваши советы очень полезны. Не знал про Promise.all.
 import './index.css';
 import Card from '../components/Card';
 import FormValidator from "../components/FormValidator";
@@ -27,25 +28,36 @@ const popupDeleteCard = new PopupDeleteCard('.popup_delete', (card) => {
   return api.deleteCard(card)
     .then(() => {
       card.deleteCard();
+      popupDeleteCard.close();
     })
+    .catch(e => console.error(e.message))
 });
 
 const popupProfile = new PopupWithForm('.popup_profile', (data) => {
   return api.setUserData({name: data['popup-name'], about: data['popup-description']})
     .then(data => {
       userInfo.setUserInfo({name: data.name, description: data.about});
+      popupProfile.close();
     })
+    .catch(e => console.error(e.message));
 });
 
 const popupAddAvatar = new PopupWithForm('.popup_add-avatar', (data) => {
   return api.addAvatar(data['avatar-link'])
     .then((data) => {
       userInfo.setUserAvatar(data.avatar);
+      popupAddAvatar.close();
     })
+    .catch(e => console.error(e.message));
 });
 
-api.getUserData()
-  .then(userData => {
+Promise.all([
+  api.getUserData(),
+  api.getInitialCards()
+])
+  .then(values => {
+    const [userData, initialCards] = values;
+
     userInfo.setUserInfo({name: userData.name, description: userData.about});
     userInfo.setUserAvatar(userData.avatar);
 
@@ -68,21 +80,21 @@ api.getUserData()
       }
     }, '.gallery__list');
 
-    api.getInitialCards()
-      .then(data => {
-        cardSection.renderItems(data);
-      })
+    cardSection.renderItems(initialCards);
 
     const popupPlace = new PopupWithForm('.popup_new-place', (data) => {
       return api.addCard({name: data['popup-name'], link: data['popup-description']})
         .then(data => {
           cardSection.renderer(data);
+          popupPlace.close();
         })
+        .catch(e => console.error(e.message));
     });
 
     profileButtonAdd.addEventListener('click', () => popupPlace.open());
     const newPlacePopupValid = new FormValidator(validConfig, popupPlace.form);
     newPlacePopupValid.enableValidation();
+    popupPlace.setEventListeners();
   })
 
 profileButtonEdit.addEventListener('click', () => popupProfile.open(userInfo.getUserInfo()));
@@ -93,6 +105,11 @@ const profilePopupValid = new FormValidator(validConfig, popupProfile.form);
 
 profilePopupValid.enableValidation();
 addAvatarValid.enableValidation();
+
+popupProfile.setEventListeners();
+popupAddAvatar.setEventListeners();
+popupWithImage.setEventListeners();
+popupDeleteCard.setEventListeners();
 
 
 
